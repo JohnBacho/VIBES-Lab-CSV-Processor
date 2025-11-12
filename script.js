@@ -78,17 +78,18 @@ fileInput.addEventListener("change", function (e) {
     const uniqueArray = Array.from(uniqueChars);
     ContextType = uniqueArray.join("");
     if (ContextType.length <= 1) {
-        ContextType = "AAA";
-    }
-    else{
-        ContextType = "ABA"
+      ContextType = "AAA";
+    } else {
+      ContextType = "ABA";
     }
     Hardware = "";
-    if(headerRow.includes("rightEyeRotationY") || headerRow.includes("localGazeZ") ){
-        Hardware = "VR";
-    }
-    else{
-        Hardware = "SB";
+    if (
+      headerRow.includes("rightEyeRotationY") ||
+      headerRow.includes("localGazeZ")
+    ) {
+      Hardware = "VR";
+    } else {
+      Hardware = "SB";
     }
 
     const csvContent = finalRows.map((r) => r.join(",")).join("\n");
@@ -96,7 +97,7 @@ fileInput.addEventListener("change", function (e) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `Program_${Hardware}_${ContextType}.csv`;
+    a.download = `Program_${Hardware}_${ContextType}_DONE.csv`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
